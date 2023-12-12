@@ -1,4 +1,4 @@
-import { getAllUsers } from "@/lib/script";
+import getAllUsers from "@/lib/script";
 
 export default async function Home() {
   const users = await getAllUsers();
@@ -6,11 +6,12 @@ export default async function Home() {
     <div>
       <h1>Users</h1>
       <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.id}: {user.username}
-          </li>
-        ))}
+        {users &&
+          users.map((user) => (
+            <li key={user.id}>
+              {user.id}: {user.username}
+            </li>
+          ))}
       </ul>
     </div>
   );
