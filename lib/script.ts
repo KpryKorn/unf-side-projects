@@ -1,6 +1,6 @@
 import prisma from "./prisma";
 
-export default async function getAllUsers() {
+export async function getAllUsers() {
   try {
     const users = await prisma.users.findMany();
     return users;
