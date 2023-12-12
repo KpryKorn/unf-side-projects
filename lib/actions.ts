@@ -1,3 +1,5 @@
+"use server";
+
 import { TData } from "@/types/Types";
 import prisma from "./prisma";
 
