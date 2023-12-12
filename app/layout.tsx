@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={inter.className + " container bg-slate-950 text-white"}>
-        <main className="my-6 md:my-12">{children}</main>
+        <main className="py-6 md:py-12">{children}</main>
       </body>
     </html>
   );
