@@ -1,3 +1,4 @@
+import Button from "@/components/button";
 import { getAllUsers } from "@/lib/actions";
 
 export default async function Home() {
@@ -13,6 +14,7 @@ export default async function Home() {
             </li>
           ))}
       </ul>
+      <Button />
     </div>
   );
 }
