@@ -1,20 +1,12 @@
-import Button from "@/components/button";
-import { getAllUsers } from "@/lib/actions";
+import Link from "next/link";
 
 export default async function Home() {
-  const users = await getAllUsers();
   return (
     <div>
-      <h1 className="text-2xl font-semibold mb-4">Users</h1>
-      <ul>
-        {users &&
-          users.map((user) => (
-            <li key={user.id}>
-              {user.id} — {user.username}
-            </li>
-          ))}
-      </ul>
-      <Button />
+      <h1 className="text-2xl font-semibold mb-8">Users</h1>
+      <Link href="/users" className="rounded-lg bg-blue-400 p-4">
+        Users
+      </Link>
     </div>
   );
 }
