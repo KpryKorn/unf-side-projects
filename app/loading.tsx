@@ -1,9 +1,7 @@
 export default function Loading() {
   return (
-    <div className="flex space-x-3 animate-pulse">
-      <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
-      <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
-      <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+    <div>
+      <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-gray-300"></div>
     </div>
   );
 }
