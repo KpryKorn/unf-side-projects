@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/assets/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={inter.className + " container bg-slate-950 text-white"}>
+      <body className={inter.className + " container text-slate-950"}>
         <main className="py-6 md:py-12">{children}</main>
       </body>
     </html>
