@@ -14,7 +14,7 @@ img {
 
 .btn {
   display: inline-flex;
-  padding: 6px 12px;
+  padding: 6px 16px;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
@@ -24,8 +24,6 @@ img {
   font-weight: 500;
 }
 .btn:hover {
-  box-shadow: 0px 1px 0px 0px #ebebeb inset, -1px 0px 0px 0px #ebebeb inset,
-    1px 0px 0px 0px #ebebeb inset, 0px -1px 0px 0px #ccc inset;
   background: rgba(250, 250, 250, 1);
 }
 .btn:active {
@@ -36,33 +34,69 @@ img {
 }
 
 .btn-small {
-  padding: 4px 8px;
+  padding: 4px 10px;
   font-size: 14px;
 }
 
 .btn-large {
-  padding: 7px 14px;
+  padding: 9px 18px;
 }
 
 .btn-primary {
   background: rgb(48, 48, 48);
   color: rgba(255, 255, 255, 1);
-  box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.15) inset,
-    1px 0px 0px 0px rgba(255, 255, 255, 0.15) inset,
-    -1px 0px 0px 0px rgba(255, 255, 255, 0.15) inset,
-    0px -1px 0px 0px rgba(255, 255, 255, 0.15) inset;
+  box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.3) inset,
+    2px 0px 0px 0px rgba(255, 255, 255, 0.2) inset,
+    -2px 0px 0px 0px rgba(255, 255, 255, 0.2) inset,
+    0px -2px 0px 0px rgba(25, 25, 25, 1) inset;
 }
 .btn-primary:hover {
-  box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.15) inset,
-    1px 0px 0px 0px rgba(255, 255, 255, 0.15) inset,
-    -1px 0px 0px 0px rgba(255, 255, 255, 0.15) inset,
-    0px -1px 0px 0px rgba(255, 255, 255, 0.15) inset;
   background: rgba(26, 26, 26, 1);
   color: rgba(227, 227, 227, 1);
 }
 .btn-primary:active {
   box-shadow: 0px 3px 0px 0px #000 inset;
   background: rgba(26, 26, 26, 1);
+  color: rgba(204, 204, 204, 1);
+}
+
+.btn-success {
+  background: rgba(41, 132, 90, 1);
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.3) inset,
+    3px 0px 0px 0px rgba(255, 255, 255, 0.15) inset,
+    -3px 0px 0px 0px rgba(255, 255, 255, 0.15) inset,
+    0px -3px 0px 0px rgba(0, 0, 0, 0.3) inset;
+}
+.btn-success:hover {
+  background: rgba(19, 111, 69, 1);
+  color: rgba(227, 227, 227, 1);
+}
+.btn-success:active {
+  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.6) inset,
+    3px 0px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    -3px 0px 1px 0px rgba(0, 0, 0, 0.2) inset;
+  background: rgba(12, 81, 50, 1);
+  color: rgba(204, 204, 204, 1);
+}
+
+.btn-critical {
+  background: rgba(229, 28, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 0.4) inset,
+    3px 0px 0px 0px rgba(255, 255, 255, 0.2) inset,
+    -3px 0px 0px 0px rgba(255, 255, 255, 0.2) inset,
+    0px -3px 0px 0px rgba(0, 0, 0, 0.3) inset;
+}
+.btn-critical:hover {
+  background: rgba(181, 38, 11, 1);
+  color: rgba(227, 227, 227, 1);
+}
+.btn-critical:active {
+  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.6) inset,
+    3px 0px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    -3px 0px 1px 0px rgba(0, 0, 0, 0.2) inset;
+  background: rgba(142, 31, 11, 1);
   color: rgba(204, 204, 204, 1);
 }
 
