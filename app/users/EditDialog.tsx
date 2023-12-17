@@ -32,9 +32,7 @@ export default function EditDialog({ id, username, email }: TData) {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button className="text-indigo-400 hover:bg-indigo-600 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-white px-[15px] font-medium leading-none shadow-[0_2px_10px] focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none">
-          Edit profile
-        </button>
+        <button className="btn btn-small">Edit profile</button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="bg-black/30 data-[state=open]:animate-overlayShow fixed inset-0" />
@@ -73,10 +71,7 @@ export default function EditDialog({ id, username, email }: TData) {
               />
             </fieldset>
             <div className="mt-[25px] flex justify-end">
-              <button
-                type="submit"
-                className="bg-green-300 text-green-800 hover:bg-green-400 focus:shadow-green-500 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
-              >
+              <button type="submit" className="btn btn-success btn-large">
                 Save changes
               </button>
             </div>

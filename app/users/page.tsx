@@ -21,7 +21,7 @@ export default async function Users() {
             </li>
           ))}
       </ul>
-      <Link href="/" className="rounded-lg bg-blue-400 p-4">
+      <Link href="/" className="btn">
         Home
       </Link>
     </>

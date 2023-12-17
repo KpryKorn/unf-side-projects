@@ -31,17 +31,17 @@ export default function ProfileForm({}: ProfileFormProps) {
           type="text"
           name="username"
           defaultValue={""}
-          className="text-black"
+          className="text-black border border-black"
         />
         <label htmlFor="email">Email</label>
         <input
           type="text"
           name="email"
           defaultValue={""}
-          className="text-black"
+          className="text-black border border-black"
         />
 
-        <button type="submit" className="p-4 bg-green-600">
+        <button type="submit" className="btn btn-success">
           Save
         </button>
       </form>

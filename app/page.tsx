@@ -6,12 +6,16 @@ export default async function Home() {
       <h1 className="text-2xl font-semibold mb-8">Users</h1>
       <div className="flex gap-4">
         <div className="flex flex-col items-start gap-2">
-          <span className="btn btn-small">Users</span>
+          <Link href="/users" className="btn btn-small">
+            Users
+          </Link>
           <span className="btn">Users</span>
           <span className="btn btn-large">Users</span>
         </div>
         <div className="flex flex-col items-start gap-2">
-          <span className="btn btn-small">Dashboard</span>
+          <Link href="/dashboard" className="btn btn-small">
+            Dashboard
+          </Link>
           <span className="btn">Dashboard</span>
           <span className="btn btn-large">Dashboard</span>
         </div>
