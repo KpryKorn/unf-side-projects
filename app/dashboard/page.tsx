@@ -1,5 +1,6 @@
 import ProfileForm from "@/app/dashboard/ProfileForm";
 import Link from "next/link";
+import PostForm from "./PostForm";
 
 export default async function Dashboard() {
   return (
@@ -9,6 +10,7 @@ export default async function Dashboard() {
         Home
       </Link>
       <ProfileForm />
+      <PostForm />
     </>
   );
 }
