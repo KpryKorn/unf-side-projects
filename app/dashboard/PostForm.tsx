@@ -1,8 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 interface PostFormProps {}
 
 export default function PostForm({}: PostFormProps) {
+  const router = useRouter();
+
   const createPost = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -20,6 +24,8 @@ export default function PostForm({}: PostFormProps) {
       },
       body: JSON.stringify(body),
     });
+
+    router.refresh();
   };
 
   return (
