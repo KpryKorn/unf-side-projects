@@ -23,7 +23,7 @@ export default function ProfileForm({}: ProfileFormProps) {
   };
 
   return (
-    <div className="my-8 p-2 border border-white">
+    <div className="my-8 p-2 border border-gray">
       <h2 className="text-2xl font-semibold">Create a new user</h2>
       <form onSubmit={createUser} className="flex flex-col items-start gap-2">
         <label htmlFor="username">Username</label>
