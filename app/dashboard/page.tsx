@@ -1,4 +1,4 @@
-import ProfileForm from "@/app/dashboard/ProfileForm";
+import ProfileForm from "./ProfileForm";
 import Link from "next/link";
 import PostForm from "./PostForm";
 
