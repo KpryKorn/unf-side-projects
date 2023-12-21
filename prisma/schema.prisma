@@ -15,6 +15,7 @@ model User {
   name          String?
   bio           String?
   age           Int?
+  role          String    @default("user")
   posts         Post[]
   email         String?   @unique
   emailVerified DateTime?
