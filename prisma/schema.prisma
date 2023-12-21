@@ -10,9 +10,9 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model Users {
+model User {
   id            String    @id @default(cuid())
-  username          String?
+  name          String?
   bio           String?
   age           Int?
   posts         Post[]
@@ -28,7 +28,7 @@ model Post {
   title String
   content String
   published Boolean @default(false)
-  author Users? @relation(fields: [authorId], references: [id])
+  author User? @relation(fields: [authorId], references: [id])
   authorId String?
   createdAt DateTime @default(now())
 }
@@ -50,7 +50,7 @@ model Account {
   id_token           String? 
   session_state      String?
 
-  user Users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -60,7 +60,7 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-  user         Users     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
