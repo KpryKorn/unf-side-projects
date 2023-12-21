@@ -2,9 +2,22 @@ import ProfileForm from "./ProfileForm";
 import Link from "next/link";
 import PostForm from "./PostForm";
 import prisma from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { SignInButton } from "@/components/buttons";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export default async function Dashboard() {
   const posts = await prisma.post.findMany();
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return (
+      <div className="flex flex-col gap-2 items-center justify-center">
+        <p>You must be signed in to access this content.</p>
+        <SignInButton />
+      </div>
+    );
+  }
   return (
     <>
       <h1>Dashboard</h1>

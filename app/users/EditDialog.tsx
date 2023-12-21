@@ -4,7 +4,7 @@ import { TData } from "@/types/Types";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useState } from "react";
 
-export default function EditDialog({ id, username, email }: TData) {
+export default function EditDialog({ id, name, email }: TData) {
   const updateUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -12,7 +12,7 @@ export default function EditDialog({ id, username, email }: TData) {
 
     const body = {
       id: id,
-      username: formData.get("username"),
+      name: formData.get("name"),
       email: formData.get("email"),
     };
 
@@ -60,14 +60,14 @@ export default function EditDialog({ id, username, email }: TData) {
             <fieldset className="mb-[15px] flex items-center gap-5">
               <label
                 className="text-indigo-400 w-[90px] text-right text-[15px]"
-                htmlFor="username"
+                htmlFor="name"
               >
-                Username
+                name
               </label>
               <input
                 className="text-indigo-400 shadow-purple-400 focus:shadow-purple-400 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
-                name="username"
-                defaultValue={username ?? ""}
+                name="name"
+                defaultValue={name ?? ""}
               />
             </fieldset>
             <div className="mt-[25px] flex justify-end">

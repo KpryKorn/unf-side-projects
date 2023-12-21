@@ -1,6 +1,7 @@
 import "@/assets/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import AuthProvider from "./AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,10 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body className={inter.className + " container text-slate-950"}>
-        <main className="py-6 md:py-12">{children}</main>
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="fr">
+        <body className={inter.className + " container text-slate-950"}>
+          <main className="py-6 md:py-12">{children}</main>
+        </body>
+      </html>
+    </AuthProvider>
   );
 }
