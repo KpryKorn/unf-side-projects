@@ -1,5 +1,5 @@
 export type TData = {
   id?: string;
-  username: string;
-  email: string;
+  name: string | null;
+  email: string | null;
 };

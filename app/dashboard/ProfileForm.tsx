@@ -9,7 +9,7 @@ export default function ProfileForm({}: ProfileFormProps) {
     const formData = new FormData(e.currentTarget);
 
     const body = {
-      username: formData.get("username"),
+      name: formData.get("name"),
       email: formData.get("email"),
     };
 
@@ -26,10 +26,10 @@ export default function ProfileForm({}: ProfileFormProps) {
     <div className="my-8 p-2 border border-gray">
       <h2 className="text-2xl font-semibold">Create a new user</h2>
       <form onSubmit={createUser} className="flex flex-col items-start gap-2">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="name">name</label>
         <input
           type="text"
-          name="username"
+          name="name"
           defaultValue={""}
           className="text-black border border-black"
         />
