@@ -12,12 +12,8 @@ export default async function Users() {
         {users &&
           users.map((user) => (
             <li key={user.id}>
-              {user.email} — {user.username}
-              <EditDialog
-                id={user.id}
-                username={user.username}
-                email={user.email}
-              />
+              {user.email} — {user.name}
+              <EditDialog id={user.id} name={user.name} email={user.email} />
             </li>
           ))}
       </ul>
