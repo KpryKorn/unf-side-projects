@@ -10,7 +10,7 @@ export function SignInButton() {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
-    return <>...</>;
+    return <button className="btn">...</button>;
   }
 
   if (status === "authenticated") {
