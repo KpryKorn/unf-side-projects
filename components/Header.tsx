@@ -3,7 +3,7 @@ import { SignInButton, SignOutButton } from "./buttons";
 import AuthCheck from "./AuthCheck";
 
 const routes = [
-  { name: "Admin", path: "/admin" },
+  { name: "Users", path: "/users" },
   { name: "Dashboard", path: "/dashboard" },
   { name: "Posts", path: "/posts" },
 ];
