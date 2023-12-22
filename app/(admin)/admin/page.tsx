@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../../api/auth/[...nextauth]/route";
 import prisma from "@/lib/prisma";
 import { SignInButton } from "@/components/buttons";
 
@@ -9,7 +9,7 @@ export default async function page() {
   if (!session) {
     return (
       <div className="flex flex-col items-center justify-center gap-4">
-        <p>You cannot access this content. You need to be logged in.</p>
+        <p>You cannot access this content. You need to be signed in.</p>
         <SignInButton />
       </div>
     );
