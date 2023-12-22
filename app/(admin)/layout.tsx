@@ -2,7 +2,7 @@ import "@/assets/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import AuthProvider from "../(user)/AuthProvider";
-import Header from "@/components/Header";
+import Sidebar from "@/components/admin/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +19,9 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="fr">
-        <body className={inter.className + " container text-slate-950"}>
-          <main className="py-6 md:py-12">{children}</main>
+        <body className={inter.className + "text-slate-950"}>
+          <Sidebar />
+          <main className="container py-6 md:py-12 pl-48">{children}</main>
         </body>
       </html>
     </AuthProvider>
