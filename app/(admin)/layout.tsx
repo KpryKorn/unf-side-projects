@@ -23,11 +23,20 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
 
   if (!session) {
+    // si l'utilisateur n'est pas connecté
     return (
-      <div className="flex flex-col items-center justify-center gap-4">
-        <p>You cannot access this content. You need to be signed in.</p>
-        <SignInButton />
-      </div>
+      <AuthProvider>
+        <html lang="fr">
+          <body className={inter.className + "text-slate-950"}>
+            <main className="container py-6 md:py-12">
+              <div className="flex flex-col items-center justify-center gap-4">
+                <p>You cannot access this content. You need to be signed in.</p>
+                <SignInButton />
+              </div>
+            </main>
+          </body>
+        </html>
+      </AuthProvider>
     );
   }
 
@@ -39,7 +48,20 @@ export default async function RootLayout({
   });
 
   if (!activeUser || activeUser.role !== "admin") {
-    return <p className="container">Only admins can access this content.</p>;
+    // si l'utilisateur n'est pas admin
+    return (
+      <AuthProvider>
+        <html lang="fr">
+          <body className={inter.className + "text-slate-950"}>
+            <main className="container py-6 md:py-12">
+              <div className="flex flex-col items-center justify-center gap-4">
+                <p>Only admins can access this content.</p>
+              </div>
+            </main>
+          </body>
+        </html>
+      </AuthProvider>
+    );
   }
 
   return (
