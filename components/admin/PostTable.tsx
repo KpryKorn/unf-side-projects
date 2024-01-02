@@ -20,8 +20,8 @@ export default function PostTable({ posts }: PostTableProps) {
 
   const sortedPosts = [...posts].sort((a, b) => {
     if (sortField) {
-      const aValue = a[sortField];
-      const bValue = b[sortField];
+      const aValue = a[sortField as keyof TPost];
+      const bValue = b[sortField as keyof TPost];
       return sortDirection === "desc"
         ? String(aValue).localeCompare(String(bValue))
         : String(bValue).localeCompare(String(aValue));
