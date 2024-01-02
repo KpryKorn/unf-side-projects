@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import defaultPfp from "@/assets/default-profile-picture.jpeg";
+import { deletePost } from "@/lib/actions";
+import { useRouter } from "next/navigation";
 
 export function SignInButton() {
   const { data: session, status } = useSession();
@@ -37,6 +39,22 @@ export function SignOutButton() {
   return (
     <button onClick={() => signOut()} className="btn btn-critical">
       Sign out
+    </button>
+  );
+}
+
+export function DeleteButton({ id }: { id: number }) {
+  const router = useRouter();
+  return (
+    <button
+      onClick={() =>
+        deletePost(id)
+          .then(() => router.refresh())
+          .catch(console.error)
+      }
+      className="btn btn-small btn-critical"
+    >
+      Delete
     </button>
   );
 }

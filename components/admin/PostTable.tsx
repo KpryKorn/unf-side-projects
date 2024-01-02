@@ -1,4 +1,5 @@
 import type { TPost } from "@/types/Types";
+import { DeleteButton } from "../buttons";
 
 interface PostTableProps {
   posts: TPost[];
@@ -7,7 +8,7 @@ interface PostTableProps {
 export default async function PostTable({ posts }: PostTableProps) {
   const dateFr = (date: Date) => new Date(date).toLocaleDateString("fr-FR");
   return (
-    <table className="w-full text-sm text-left text-gray-500">
+    <table className="w-full min-w-full text-sm text-left text-gray-500">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <th scope="col" className="p-4 rounded-tl">
@@ -73,12 +74,7 @@ export default async function PostTable({ posts }: PostTableProps) {
             <td className="px-6 py-4">{post.published ? "Yes" : "No"}</td>
             <td className="px-6 py-4">{dateFr(post.createdAt)}</td>
             <td className="px-6 py-4">
-              <a
-                href="#"
-                className="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >
-                Remove
-              </a>
+              <DeleteButton id={post.id} />
             </td>
           </tr>
         ))}
