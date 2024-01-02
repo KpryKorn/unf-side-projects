@@ -1,12 +1,34 @@
+"use client";
+
 import type { TPost } from "@/types/Types";
 import { DeleteButton } from "../buttons";
+import { useState } from "react";
 
 interface PostTableProps {
   posts: TPost[];
 }
 
-export default async function PostTable({ posts }: PostTableProps) {
+export default function PostTable({ posts }: PostTableProps) {
   const dateFr = (date: Date) => new Date(date).toLocaleDateString("fr-FR");
+  const [sortField, setSortField] = useState<string | null>(null);
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
+
+  const handleSort = (field: string) => {
+    setSortField(field);
+    setSortDirection(sortDirection === "desc" ? "asc" : "desc");
+  };
+
+  const sortedPosts = [...posts].sort((a, b) => {
+    if (sortField) {
+      const aValue = a[sortField];
+      const bValue = b[sortField];
+      return sortDirection === "desc"
+        ? String(aValue).localeCompare(String(bValue))
+        : String(bValue).localeCompare(String(aValue));
+    }
+    return 0;
+  });
+
   return (
     <table className="w-full min-w-full text-sm text-left text-gray-500">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -32,11 +54,19 @@ export default async function PostTable({ posts }: PostTableProps) {
           <th scope="col" className="px-6 py-3">
             Content
           </th>
-          <th scope="col" className="px-6 py-3">
+          <th
+            scope="col"
+            className="px-6 py-3 cursor-pointer"
+            onClick={() => handleSort("published")}
+          >
             Published
           </th>
-          <th scope="col" className="px-6 py-3 whitespace-nowrap">
-            Created At
+          <th
+            scope="col"
+            className="px-6 py-3 whitespace-nowrap cursor-pointer"
+            onClick={() => handleSort("createdAt")}
+          >
+            {`Created At ${sortDirection === "desc" ? "▼" : "▲"}`}
           </th>
           <th scope="col" className="px-6 py-3 rounded-tr">
             Action
@@ -44,7 +74,7 @@ export default async function PostTable({ posts }: PostTableProps) {
         </tr>
       </thead>
       <tbody>
-        {posts.map((post, index) => (
+        {sortedPosts.map((post, index) => (
           <tr
             key={index}
             className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
