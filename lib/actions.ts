@@ -40,3 +40,15 @@ export async function deletePost(id: number) {
     await prisma.$disconnect();
   }
 }
+
+export async function deleteUser(id: string) {
+  try {
+    const user = await prisma.user.delete({
+      where: { id },
+    });
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await prisma.$disconnect();
+  }
+}
