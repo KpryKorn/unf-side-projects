@@ -28,3 +28,27 @@ export async function createUser(data: TData) {
     await prisma.$disconnect();
   }
 }
+
+export async function deletePost(id: number) {
+  try {
+    const post = await prisma.post.delete({
+      where: { id },
+    });
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+export async function deleteUser(id: string) {
+  try {
+    const user = await prisma.user.delete({
+      where: { id },
+    });
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await prisma.$disconnect();
+  }
+}

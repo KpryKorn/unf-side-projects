@@ -4,7 +4,7 @@ import PostForm from "./PostForm";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { SignInButton } from "@/components/buttons";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../../api/auth/[...nextauth]/route";
 
 export default async function Dashboard() {
   const posts = await prisma.post.findMany();
