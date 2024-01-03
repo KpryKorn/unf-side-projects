@@ -1,6 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
+import ProfileForm from "../ProfileForm";
 
 interface UserDashboardProps {
   params: {
@@ -20,5 +21,10 @@ export default async function UserDashboard({ params }: UserDashboardProps) {
     return <div>Unauthorized</div>; // TODO: return 401
   }
 
-  return <div>{session?.user.id}</div>;
+  return (
+    <>
+      <h1 className="font-semibold text-2xl">Edit Profile</h1>
+      <ProfileForm />
+    </>
+  );
 }
