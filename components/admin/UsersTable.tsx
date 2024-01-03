@@ -5,6 +5,7 @@ import { useState } from "react";
 import defaultPfp from "@/assets/default-profile-picture.jpeg";
 import Image from "next/image";
 import { DeleteModal } from "../modals";
+import Link from "next/link";
 
 interface UsersTableProps {
   users: TUser[];
@@ -93,7 +94,7 @@ export default function UsersTable({ users }: UsersTableProps) {
               scope="row"
               className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
-              {user.name}
+              <Link href={`/users/${user.id}`}>{user.name}</Link>
             </th>
             <td className="px-6 py-4">
               <Image
