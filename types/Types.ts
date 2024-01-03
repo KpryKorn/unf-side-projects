@@ -17,3 +17,15 @@ export type TPost = {
 type TAuthor = {
   name: string | null;
 };
+
+export type TUser = {
+  id: string;
+  name: string | null;
+  bio: string | null;
+  age: number | null;
+  role: string;
+  posts: TPost[];
+  email: string | null;
+  emailVerified: Date | null;
+  image: string | null;
+};
