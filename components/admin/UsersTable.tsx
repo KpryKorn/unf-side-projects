@@ -3,6 +3,8 @@
 import type { TUser } from "@/types/Types";
 import { DeleteUserButton } from "../buttons";
 import { useState } from "react";
+import defaultPfp from "@/assets/default-profile-picture.jpeg";
+import Image from "next/image";
 
 interface UsersTableProps {
   users: TUser[];
@@ -46,27 +48,23 @@ export default function UsersTable({ users }: UsersTableProps) {
             </div>
           </th>
           <th scope="col" className="px-6 py-3">
-            Post Title
+            Name
           </th>
           <th scope="col" className="px-6 py-3">
-            Author
-          </th>
-          <th scope="col" className="px-6 py-3">
-            Content
+            Image
           </th>
           <th
             scope="col"
             className="px-6 py-3 cursor-pointer"
-            onClick={() => handleSort("published")}
+            onClick={() => handleSort("role")}
           >
-            Published
+            {`Role ${sortDirection === "desc" ? "▼" : "▲"}`}
           </th>
-          <th
-            scope="col"
-            className="px-6 py-3 whitespace-nowrap cursor-pointer"
-            onClick={() => handleSort("createdAt")}
-          >
-            {`Created At ${sortDirection === "desc" ? "▼" : "▲"}`}
+          <th scope="col" className="px-6 py-3 whitespace-nowrap">
+            Biography
+          </th>
+          <th scope="col" className="px-6 py-3">
+            Posts
           </th>
           <th scope="col" className="px-6 py-3 rounded-tr">
             Action
@@ -97,10 +95,20 @@ export default function UsersTable({ users }: UsersTableProps) {
             >
               {user.name}
             </th>
-            <td className="px-6 py-4 whitespace-nowrap">{user.image}</td>
-            <td className="px-6 py-4">{user.email}</td>
-            <td className="px-6 py-4">{dateFr(user.emailVerified!) || "No"}</td>
+            <td className="px-6 py-4">
+              <Image
+                src={user.image ?? defaultPfp}
+                alt={`${user.name}'s profile picture`}
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+            </td>
             <td className="px-6 py-4">{user.role}</td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              {user.bio || "Incomplete"}
+            </td>
+            <td className="px-6 py-4">{user.posts.length}</td>
             <td className="px-6 py-4">
               <DeleteUserButton id={user.id} />
             </td>
