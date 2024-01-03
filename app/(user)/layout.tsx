@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import AuthProvider from "./AuthProvider";
 import Header from "@/components/Header";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import { SignInButton } from "@/components/buttons";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,11 +14,31 @@ export const metadata: Metadata = {
   description: "Généré par mon template Next.js",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    // si l'utilisateur n'est pas connecté
+    return (
+      <AuthProvider>
+        <html lang="fr">
+          <body className={inter.className + "text-slate-950"}>
+            <main className="container py-6 md:py-12">
+              <div className="flex flex-col items-center justify-center gap-4">
+                <p>You cannot access this content. You need to be signed in.</p>
+                <SignInButton />
+              </div>
+            </main>
+          </body>
+        </html>
+      </AuthProvider>
+    );
+  }
+
   return (
     <AuthProvider>
       <html lang="fr">
