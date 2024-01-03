@@ -1,7 +1,7 @@
 import { getAllUsers } from "@/lib/actions";
 import { unstable_noStore } from "next/cache";
 import Link from "next/link";
-import EditDialog from "./EditDialog";
+import EditDialog from "../dashboard/EditDialog";
 
 export default async function Users() {
   unstable_noStore();
