@@ -1,18 +1,20 @@
-import { getAllUsers } from "@/lib/actions";
-import EditDialog from "@/app/(user)/users/EditDialog";
+import UsersTable from "@/components/admin/UsersTable";
+import prisma from "@/lib/prisma";
 
 export default async function users() {
-  const users = await getAllUsers();
+  const users = await prisma.user.findMany({
+    include: {
+      posts: {
+        include: {
+          author: true,
+        },
+      },
+    },
+  });
 
   return (
-    <ul className="mb-8">
-      {users &&
-        users.map((user) => (
-          <li key={user.id}>
-            {user.role} — {user.name}
-            <EditDialog id={user.id} name={user.name} email={user.email} />
-          </li>
-        ))}
-    </ul>
+    <>
+      <UsersTable users={users} />
+    </>
   );
 }
