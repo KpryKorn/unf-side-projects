@@ -1,10 +1,10 @@
 "use client";
 
 import type { TUser } from "@/types/Types";
-import { DeleteUserButton } from "../buttons";
 import { useState } from "react";
 import defaultPfp from "@/assets/default-profile-picture.jpeg";
 import Image from "next/image";
+import { DeleteModal } from "../modals";
 
 interface UsersTableProps {
   users: TUser[];
@@ -110,7 +110,7 @@ export default function UsersTable({ users }: UsersTableProps) {
             </td>
             <td className="px-6 py-4">{user.posts.length}</td>
             <td className="px-6 py-4">
-              <DeleteUserButton id={user.id} />
+              <DeleteModal id={user.id} />
             </td>
           </tr>
         ))}
