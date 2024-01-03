@@ -1,7 +1,7 @@
 "use client";
 
 import type { TPost } from "@/types/Types";
-import { DeleteButton } from "../buttons";
+import { DeletePostButton } from "../buttons";
 import { useState } from "react";
 
 interface PostTableProps {
@@ -104,7 +104,7 @@ export default function PostTable({ posts }: PostTableProps) {
             <td className="px-6 py-4">{post.published ? "Yes" : "No"}</td>
             <td className="px-6 py-4">{dateFr(post.createdAt)}</td>
             <td className="px-6 py-4">
-              <DeleteButton id={post.id} />
+              <DeletePostButton id={post.id} />
             </td>
           </tr>
         ))}
