@@ -38,7 +38,7 @@ export default async function UserDashboard({ params }: UserDashboardProps) {
   return (
     <>
       <h1 className="font-semibold text-2xl">Edit Profile</h1>
-      <ProfileForm />
+      <ProfileForm user={user!} />
     </>
   );
 }
