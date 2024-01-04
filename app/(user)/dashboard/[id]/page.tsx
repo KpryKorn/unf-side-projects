@@ -9,6 +9,20 @@ interface UserDashboardProps {
   };
 }
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const users = await prisma.user.findMany({
+    select: {
+      id: true,
+    },
+  });
+
+  return users.map((user) => ({
+    id: user.id,
+  }));
+}
+
 export default async function UserDashboard({ params }: UserDashboardProps) {
   const session = await getServerSession(authOptions);
   const user = await prisma.user.findUnique({
