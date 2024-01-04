@@ -17,7 +17,7 @@ export function SignInButton() {
 
   if (status === "authenticated") {
     return (
-      <Link href={"/dashboard"}>
+      <Link href={`/dashboard/${session.user.id}`}>
         <Image
           src={session.user?.image ?? defaultPfp}
           alt={session.user?.name ?? "Profile picture"}

@@ -24,7 +24,7 @@ export type TUser = {
   bio: string | null;
   age: number | null;
   role: string;
-  posts: TPost[];
+  posts?: TPost[];
   email: string | null;
   emailVerified: Date | null;
   image: string | null;
