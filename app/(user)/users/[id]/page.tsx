@@ -9,6 +9,20 @@ interface UserProfileProps {
   };
 }
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const users = await prisma.user.findMany({
+    select: {
+      id: true,
+    },
+  });
+
+  return users.map((user) => ({
+    id: user.id,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: UserProfileProps): Promise<Metadata> {
