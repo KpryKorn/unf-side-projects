@@ -10,7 +10,7 @@ const routes = [
 
 export default async function Header() {
   return (
-    <header className="py-6 md:py-12 flex items-center justify-between">
+    <header className="relative z-10 py-6 md:py-10 flex items-center justify-between">
       <Link href={"/"} className="text-xl font-semibold">
         UFSP
       </Link>
