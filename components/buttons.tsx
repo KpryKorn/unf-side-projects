@@ -74,3 +74,11 @@ export function DeleteUserButton({ id }: { id: string }) {
     </button>
   );
 }
+
+export function MessageButton() {
+  return <button className="btn">Message</button>;
+}
+
+export function ParamButton() {
+  return <button className="btn !font-bold text-xl">⋮</button>;
+}
