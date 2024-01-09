@@ -1,7 +1,6 @@
 import { getAllUsers } from "@/lib/actions";
 import { unstable_noStore } from "next/cache";
 import Link from "next/link";
-import EditDialog from "../dashboard/EditDialog";
 
 export default async function Users() {
   unstable_noStore();
@@ -11,15 +10,17 @@ export default async function Users() {
       <ul className="mb-8">
         {users &&
           users.map((user) => (
-            <li key={user.id}>
-              {user.email} — {user.name}
-              <EditDialog id={user.id} name={user.name} email={user.email} />
+            <li key={user.id} className="mb-2">
+              {user.role} — {user.name}
+              <Link
+                href={`/users/${user.id}`}
+                className="ml-2 btn btn-small btn-primary"
+              >
+                Check user profile
+              </Link>
             </li>
           ))}
       </ul>
-      <Link href="/" className="btn">
-        Home
-      </Link>
     </>
   );
 }
