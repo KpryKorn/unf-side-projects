@@ -6,6 +6,9 @@ import Chip from "@/components/chip";
 import FeaturedProject from "@/components/FeaturedProject";
 import { MessageButton, ParamButton } from "@/components/buttons";
 import { ExperienceProfileBadge, ProjectsProfileBadge } from "./profile-badges";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Link from "next/link";
 
 interface UserProfileProps {
   params: {
@@ -41,6 +44,7 @@ export async function generateMetadata({
 }
 
 export default async function UserProfile({ params }: UserProfileProps) {
+  const session = await getServerSession(authOptions);
   const user = await prisma.user.findUnique({
     where: {
       id: params.id,
@@ -63,13 +67,18 @@ export default async function UserProfile({ params }: UserProfileProps) {
           <div className="flex gap-1">
             <ParamButton />
             <MessageButton />
+            {session?.user.id === user?.id && (
+              <Link href={`/dashboard/${user?.id}`} className="btn btn-primary">
+                Edit Profile
+              </Link>
+            )}
           </div>
         </div>
 
         <div className="flex items-center justify-between mt-[10px] mb-1">
           <div className="flex flex-col items-start gap-2">
             <div className="flex items-center gap-2">
-              <h1 className="font-medium text-3xl leading-none tracking-tight">
+              <h1 className="font-serif font-semibold text-3xl leading-none tracking-tight">
                 {name ?? "Incomplete name"}
               </h1>
               <Chip text={role} />
