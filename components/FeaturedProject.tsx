@@ -13,7 +13,7 @@ export default async function FeaturedProject({}: FeaturedProjectProps) {
         <Image
           src={defaultProject}
           alt={"Project"}
-          width={500}
+          width={1000}
           height={500}
           className="mb-4 aspect-video h-full w-full rounded-lg"
         />
