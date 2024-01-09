@@ -46,12 +46,12 @@ export default async function UserProfile({ params }: UserProfileProps) {
       id: params.id,
     },
   });
-  const { name, bio, image, role, age } = user ?? {};
+  const { name, bio, image, role } = user ?? {};
 
   return (
     <>
-      <div className="absolute -z-10 top-0 left-0 w-full h-[275px] bg-gradient-to-r from-orange-200 to-purple-400"></div>
-      <article className="mt-[-20px]">
+      <div className="absolute -z-10 top-0 left-0 w-full h-[325px] bg-gradient-to-r from-orange-200 to-purple-400"></div>
+      <article className="mt-10">
         <div className="flex items-end justify-between mb-8">
           <Image
             src={image ?? defaultPfp}
