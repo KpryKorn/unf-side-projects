@@ -34,12 +34,14 @@ export default function ProfileForm({ user }: ProfileFormProps) {
         <input
           type="text"
           name="age"
+          id="age"
           defaultValue={user.age ?? ""}
           className="text-black border border-black"
         />
         <label htmlFor="bio">Biography</label>
         <textarea
           name="bio"
+          id="bio"
           cols={30}
           rows={10}
           defaultValue={user.bio ?? ""}
