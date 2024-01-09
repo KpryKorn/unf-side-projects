@@ -58,7 +58,7 @@ export default async function UserProfile({ params }: UserProfileProps) {
             alt={name ?? "Profile picture"}
             width={200}
             height={200}
-            className="rounded-full p-1  border border-white bg-white shadow"
+            className="rounded-full p-1 bg-gradient-to-l from-orange-300 to-purple-500 shadow-lg"
           />
           <div className="flex gap-1">
             <ParamButton />
