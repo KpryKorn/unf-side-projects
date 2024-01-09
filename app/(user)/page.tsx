@@ -10,6 +10,9 @@ export default async function Home() {
         <AuthCheck>
           <SignOutButton />
         </AuthCheck>
+        <button className="btn btn-primary">Primary</button>
+        <button className="btn btn-success">Success</button>
+        <button className="btn">Test</button>
       </div>
     </div>
   );
