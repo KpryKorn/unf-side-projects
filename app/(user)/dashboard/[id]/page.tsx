@@ -2,6 +2,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import ProfileForm from "../ProfileForm";
+import PostForm from "../PostForm";
 
 interface UserDashboardProps {
   params: {
@@ -39,6 +40,7 @@ export default async function UserDashboard({ params }: UserDashboardProps) {
     <>
       <h1 className="font-semibold text-2xl">Edit Profile</h1>
       <ProfileForm user={user!} />
+      <PostForm />
     </>
   );
 }
