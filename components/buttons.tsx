@@ -21,8 +21,9 @@ export function SignInButton() {
         <Image
           src={session.user?.image ?? defaultPfp}
           alt={session.user?.name ?? "Profile picture"}
-          width={32}
-          height={32}
+          width={35}
+          height={35}
+          className="rounded-full cursor-pointer border-2 border-white"
         />
       </Link>
     );
