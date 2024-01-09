@@ -35,10 +35,16 @@ const config: Config = {
           },
           to: { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
         },
+        slideInFromBottom: {
+          from: { transform: "translateY(100%) translateX(50%)" },
+          to: { transform: "translateY(0%) translateX(50%)" },
+        },
       },
       animation: {
         overlayShow: "overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
         contentShow: "contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideInFromBottom:
+          "slideInFromBottom 300ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
       fontFamily: {
         sans: ["var(--font-inter)"],
