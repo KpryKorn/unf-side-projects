@@ -1,11 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { SuccessToast, ErrorToast } from "@/components/toasts";
+import { useEffect, useState } from "react";
 
 interface PostFormProps {}
 
 export default function PostForm({}: PostFormProps) {
-  const router = useRouter();
+  const [toast, setToast] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const createPost = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,16 +21,35 @@ export default function PostForm({}: PostFormProps) {
       content: formData.get("content"),
     };
 
-    const res = await fetch("/api/posts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+    try {
+      const res = await fetch("/api/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
 
-    router.refresh();
+      if (res.ok) {
+        setToast({ type: "success", message: "Post created successfully" });
+      } else {
+        throw new Error("Failed to create post");
+      }
+    } catch (error) {
+      console.error("Error creating post:", error);
+      setToast({ type: "error", message: "Post creation failed" });
+    }
   };
+
+  useEffect(() => {
+    if (toast) {
+      const timeoutId = setTimeout(() => {
+        setToast(null);
+      }, 5000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [toast]);
 
   return (
     <div className="my-8 p-2 border border-gray">
@@ -36,6 +59,7 @@ export default function PostForm({}: PostFormProps) {
         <input
           type="text"
           name="title"
+          id="title"
           defaultValue={""}
           className="text-black border border-black"
         />
@@ -43,6 +67,7 @@ export default function PostForm({}: PostFormProps) {
         <input
           type="text"
           name="content"
+          id="content"
           defaultValue={""}
           className="text-black border border-black"
         />
@@ -51,6 +76,12 @@ export default function PostForm({}: PostFormProps) {
           Save
         </button>
       </form>
+      {toast &&
+        (toast.type === "success" ? (
+          <SuccessToast text={toast.message} />
+        ) : (
+          <ErrorToast text={toast.message} />
+        ))}
     </div>
   );
 }
