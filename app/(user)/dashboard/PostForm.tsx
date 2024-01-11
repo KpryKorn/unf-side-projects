@@ -2,17 +2,17 @@
 
 import { SuccessToast, ErrorToast } from "@/components/toasts";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-interface PostFormProps {}
-
-export default function PostForm({}: PostFormProps) {
+export default function PostForm() {
   const [toast, setToast] = useState<{
     type: "success" | "error";
     message: string;
   } | null>(null);
 
   const { data: session } = useSession();
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   const createPost = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +40,10 @@ export default function PostForm({}: PostFormProps) {
 
       if (res.ok) {
         setToast({ type: "success", message: "Post created successfully" });
+
+        if (formRef.current) {
+          formRef.current.reset();
+        }
       } else {
         throw new Error("Failed to create post");
       }
@@ -60,34 +64,49 @@ export default function PostForm({}: PostFormProps) {
   }, [toast]);
 
   return (
-    <div className="my-8 p-2 border border-gray">
-      <h2 className="text-2xl font-semibold">Create a new post</h2>
-      <form onSubmit={createPost} className="flex flex-col items-start gap-2">
+    <div className="my-8 p-2">
+      <h2 className="font-serif text-2xl font-semibold">
+        Add a new project to your profile
+      </h2>
+      <form
+        ref={formRef}
+        onSubmit={createPost}
+        className="mt-2 flex flex-col items-start gap-4"
+      >
         <input
           type="hidden"
           name="userId"
           id="userId"
           defaultValue={session?.user.id}
         />
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          defaultValue={""}
-          className="text-black border border-black"
-        />
-        <label htmlFor="content">Content</label>
-        <input
-          type="text"
-          name="content"
-          id="content"
-          defaultValue={""}
-          className="text-black border border-black"
-        />
+        <div className="w-full">
+          <label htmlFor="title" className="font-medium">
+            Title
+          </label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            defaultValue={""}
+            className="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+          />
+        </div>
+        <div className="w-full">
+          <label htmlFor="content" className="font-medium">
+            Content
+          </label>
+          <textarea
+            rows={3}
+            placeholder="Describe your side project here"
+            name="content"
+            id="content"
+            defaultValue={""}
+            className="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+          />
+        </div>
 
         <button type="submit" className="btn btn-success">
-          Save
+          Add project
         </button>
       </form>
       {toast &&
