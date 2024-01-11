@@ -1,6 +1,7 @@
 "use client";
 
 import { SuccessToast, ErrorToast } from "@/components/toasts";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 interface PostFormProps {}
@@ -11,6 +12,8 @@ export default function PostForm({}: PostFormProps) {
     message: string;
   } | null>(null);
 
+  const { data: session } = useSession();
+
   const createPost = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -19,6 +22,11 @@ export default function PostForm({}: PostFormProps) {
     const body = {
       title: formData.get("title"),
       content: formData.get("content"),
+      author: {
+        connect: {
+          id: formData.get("userId"),
+        },
+      },
     };
 
     try {
@@ -55,6 +63,12 @@ export default function PostForm({}: PostFormProps) {
     <div className="my-8 p-2 border border-gray">
       <h2 className="text-2xl font-semibold">Create a new post</h2>
       <form onSubmit={createPost} className="flex flex-col items-start gap-2">
+        <input
+          type="hidden"
+          name="userId"
+          id="userId"
+          defaultValue={session?.user.id}
+        />
         <label htmlFor="title">Title</label>
         <input
           type="text"
