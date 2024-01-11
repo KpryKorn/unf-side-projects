@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import ProfileForm from "../ProfileForm";
 import PostForm from "../PostForm";
+import { Metadata } from "next";
 
 interface UserDashboardProps {
   params: {
@@ -22,6 +23,21 @@ export async function generateStaticParams() {
   return users.map((user) => ({
     id: user.id,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: params.id,
+    },
+  });
+  return {
+    title: `${user?.name} Dashboard`,
+  };
 }
 
 export default async function UserDashboard({ params }: UserDashboardProps) {
