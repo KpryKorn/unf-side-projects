@@ -16,7 +16,7 @@ const bricolage_grotesque = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "Mon Appli Next.js",
+  title: "Admin Dashboard",
   description: "Généré par mon template Next.js",
 };
 
