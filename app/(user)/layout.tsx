@@ -56,9 +56,8 @@ export default async function RootLayout({
         lang="fr"
         className={`${inter.variable} ${bricolage_grotesque.variable}`}
       >
-        <body className="container text-slate-950">
-          <Header />
-          <main className="py-6 md:py-12">{children}</main>
+        <body className="text-slate-950">
+          <main>{children}</main>
         </body>
       </html>
     </AuthProvider>
